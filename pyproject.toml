@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mentor-that-knows"
+version = "0.1.0"
+description = "Two-agent mentor/student simulation for verifying practice through conversation."
+requires-python = ">=3.10"
+readme = "README.md"
+authors = [{ name = "AI School group project" }]
+dependencies = []
+
+[project.scripts]
+mentor-that-knows = "mentor_that_knows.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
