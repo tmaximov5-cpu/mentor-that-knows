@@ -53,6 +53,24 @@ real practitioner and awkward for a bluff:
 - one friction point from the attempt
 - one transfer answer on a fresh problem
 
+## Scripted vs Gemini runs
+
+The scripted run is the reference version of the experiment. It is deterministic: the course always has ten Flux-9 lessons, and the student intentionally bluffs on lessons 3 and 7. These two lessons are the main test cases for the mentor. A good mentor should reject the first weak answer with `ADVANCE: NO`, ask for more specific practice evidence, and only continue after the student gives a concrete remedial receipt.
+
+The Gemini run is designed to fit that scripted baseline rather than invent a different scenario. In the Gemini prompt, lessons 3 and 7 are explicitly marked as the bluff lessons, matching the scripted setting:
+
+BLUFF_LESSONS = {3, 7}
+
+This makes the two outputs comparable. The scripted version proves the intended logic in a stable, reproducible way, while the Gemini version shows that a real model can produce a natural-language transcript following the same structure.
+
+When evaluating the Gemini output, the main check is whether it preserves the core behavior from the scripted version:
+
+- ten lessons
+- student bluffs on lessons 3 and 7
+- mentor refuses advancement on those bluffs with `ADVANCE: NO`
+- student gives better remedial evidence
+- mentor later advances with `ADVANCE: YES`
+
 ## Project layout
 
 ```text
